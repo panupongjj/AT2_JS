@@ -55,11 +55,11 @@ function binarySearch(arr,value) {
         if (arr[middleIndex] == value){
             return middleIndex; // return index of array if found
         }
-        // check if value < middleValue, cut the all the RIGHT start at middel (seach LEFT half)
+        // check if value < middleValue, cut the all the RIGHT start at middel (search LEFT half)
         if(arr[middleIndex] > value){
             rightIndx = middleIndex-1;
         }else{
-            /// if value > middleValue, cut the all the LEFT start at middel (seach RIGHT half)
+            /// if value > middleValue, cut the all the LEFT start at middel (search RIGHT half)
             leftIndex = middleIndex + 1;
         }
     }
