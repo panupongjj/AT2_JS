@@ -16,7 +16,6 @@ class Student {
         this.qualification = qualification;
     }
 }
-
 //2. Create array of student
 let studentsArray = [
     new Student(11, "Rebekah","Velten", "Bachelor of Science"),
@@ -30,7 +29,7 @@ let studentsArray = [
     new Student(14, "Sophia", "Eastbrook", "Bachelor of Medicine"),
     new Student(20, "Lucas", "Martinez", "Master of Science")
 ];
-
+studentsArray.sort((a, b) => a.studentID - b.studentID);
 let tempStudentArray = []
 
 // Click EVENT
