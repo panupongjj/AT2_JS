@@ -1,11 +1,11 @@
 
 //1. Define a student class 
 class Student {
-    constructor(studentID, fristName, lastName, qulification){
+    constructor(studentID, firstName, lastName, qualification){
         this.studentID = studentID;
-        this.fristName = fristName;
+        this.firstName = firstName;
         this.lastName = lastName;
-        this.qulification = qulification;
+        this.qualification = qualification;
     }
 }
 
