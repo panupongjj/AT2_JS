@@ -33,7 +33,7 @@ function sequentialSearch(arr,value) {
     arr.sort((a, b) => a.studentID - b.studentID);
     //loop tgrough array 
     for (let index = 0; index < arr.length; index++) {
-        if (arr[index].studentID == value){
+        if (arr[index].studentID === value){
             return index; // return index of array if found
         }
     }
@@ -41,9 +41,18 @@ function sequentialSearch(arr,value) {
 }
 
 //console.log("\nArray Test case2 :",studentsArray);
-let searchID = 4 ;
+let searchID = 20 ;
 let result = sequentialSearch(studentsArray,searchID);
-console.log(searchID+" "+(result == -1? 'is not found':'is found')); //Conditional (ternary) operator.
+if (result === -1) {
+    console.log(searchID+" is not found");
+} else {
+    console.log(searchID+" is found");
+    console.log("Frist Name : "+studentsArray[result].firstName);
+    console.log("Last Name : "+studentsArray[result].lastName);
+    console.log("Qualification: "+studentsArray[result].qualification);
+    
+}
+
 
 // console.log("Array: "+ arraryNum);
 // let number2 = 46 ;

@@ -1,82 +1,99 @@
-// Show default data on the page
 window.addEventListener("load", defaultDisply);
 
+class Student {
+    constructor(studentID, firstName, lastName, qualification){
+        this.studentID = studentID;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.qualification = qualification;
+    }
+}
+//2. Create array of student
+let initStudents = [
+    new Student(11, "Rebekah","Velten", "Bachelor of Science"),
+    new Student(5, "Dani", "Cunniam", "Master of Arts"),
+    new Student(8, "Suzann", "Filgate", "Doctorate"),
+    new Student(3, "Dorie", "Simonini", "Bachelor of Engineering"),
+    new Student(25, "Tom", "Betjeman", "Master of Science"),
+    new Student(16, "Genevieve", "Wilson", "Bachelor of Arts"),
+    new Student(31, "Vonnie", "Moore", "Master of Business Administration"),
+    new Student(45, "Callean", "Anderson", "Doctorate"),
+    new Student(14, "Sophia", "Eastbrook", "Bachelor of Medicine"),
+    new Student(20, "Lucas", "Martinez", "Master of Science")
+];
 
+let studentList = new StudentList(initStudents);
+let tempStudents = studentList
+let tempstudentList = new StudentList(initStudents);
 // Set defualt Display student
 function defaultDisply(){
-    tempStudentArray = studentsArray
-    displayStudents();
+    studentList.genStudents();
 };
 
-// Displat student list.
-function displayStudents() {
-    let tableBody = document.querySelector('#student-list tbody');
-    tableBody.innerHTML = '';
-    
-    tempStudentArray.forEach(studentArr => {
-        let row = document.createElement('tr');
-        row.innerHTML = `
-            <td>${studentArr.studentID}</td>
-            <td>${studentArr.firstName}</td>
-            <td>${studentArr.lastName}</td>
-            <td>${studentArr.qualification}</td>
-        `;
-        tableBody.appendChild(row);
-    });
+function refreshClick(){
+    defaultDisply()
 }
-// Add new student to studentsArray
-function addStudent(){
+
+function addClick(){
     let id = document.getElementById('student-id').value;
     let firstName = document.getElementById('first-name').value;
     let lastName = document.getElementById('last-name').value;
     let qualification = document.getElementById('qualification').value;
-
-    if (id && firstName && lastName && qualification) {
-        studentsArray.push(new Student(id, firstName, lastName, qualification));
-        
-        tempStudentArray = studentsArray;
-        clearInputs();
-        displayStudents();
-    }
-}
-// Sequential Search for searchByID
-function sequentialSearch(arr,value) {
-    arr.sort((a, b) => a.studentID - b.studentID);
-    for (let index = 0; index < arr.length; index++) {
-        if (arr[index].studentID == value){
-            return arr[index]; // return array if found
-        }
-    }
-    return -1;// return -1  if value not found in the array
+    studentList.add(id,firstName,lastName,qualification)
+    let studentListTemp = studentList
+    studentListTemp.genStudents()
+    clearInputs()
 }
 
-// search student by studentID
-function searchByID(){
 
-    let searchId = document.getElementById('search-id').value;
-    let result = sequentialSearch(studentsArray,searchId)
+function searchIdClick(){
+    let id = document.getElementById('search-id').value;
+    let result = studentList.searchID(id)
+    
     if(result == -1){
-        alert("Student Not Found !!");
+        alert("Student ID:"+id+" Not Found !!");
         clearInputs();
     }else{
-        tempStudentArray = [];
-        tempStudentArray.push(new Student(result.studentID, result.firstName, result.lastName, result.qualification))
-        clearInputs();
-        displayStudents()
+        tempStudents = []
+        tempStudents = [new Student(result.studentID, result.firstName, result.lastName, result.qualification)]
+        tempstudentList = new StudentList(tempStudents);
+        tempstudentList.genStudents();
+        clearInputs()
     }
 }
-document.getElementById('sort-az').addEventListener('click', function() {
 
-    tempStudentArray.sort((a, b) => a.lastName.localeCompare(b.lastName));
-    displayStudents();
-});
+function searchNameClick(){
+    
+    let searchName = document.getElementById('search-name').value.toLowerCase();
+    let results = studentList.searcName(searchName)
+    
+    if(results.length == 0){
+        alert("Student name: "+searchName+" Not Found !!");
+        clearInputs();
+    }else{
+        tempStudents = []
+        results.forEach(result =>{
+            tempStudents.push(new Student(result.studentID, result.firstName, result.lastName, result.qualification))
+        });
+        tempstudentList = new StudentList(tempStudents);
+        tempstudentList.genStudents();
+        clearInputs()
+    }
+}
 
-document.getElementById('sort-za').addEventListener('click', function() {
-    tempStudentArray.sort((a, b) => b.lastName.localeCompare(a.lastName));
-    displayStudents();
-});
-
-// clear all the input field.
+function a2zClick(){
+    let result = tempstudentList.sortA2Z();
+    tempstudentList = new StudentList(result);
+    tempstudentList.genStudents()
+    
+  }
+  
+  // Z to a Click
+  function z2aClick(){
+    let result = tempstudentList.sortZ2A();
+    tempstudentList = new StudentList(result);
+    tempstudentList.genStudents()
+  }
 function clearInputs() {
     document.getElementById('student-id').value = '';
     document.getElementById('first-name').value = '';
@@ -85,4 +102,3 @@ function clearInputs() {
     document.getElementById('search-id').value = '';
     document.getElementById('search-name').value = '';
 }
-

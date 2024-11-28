@@ -23,7 +23,7 @@ console.log('\n');
 function sequentialSearch(arr,value) {
     //loop tgrough array 
     for (let index = 0; index < arr.length; index++) {
-        if (arr[index] == value){
+        if (arr[index] === value){
             return index; // return index of array if found
         }
     }
@@ -33,12 +33,12 @@ function sequentialSearch(arr,value) {
 console.log("Array: "+ arraryNum);
 let number = 14 ;
 let result = sequentialSearch(arraryNum,number);
-console.log(number+" "+(result == -1? 'is not found':'is found')); //Conditional (ternary) operator.
+console.log(number+" "+(result === -1? 'is not found':'is found')); //Conditional (ternary) operator.
 
 console.log("Array: "+ arraryNum);
 let number2 = 46 ;
 let result2 = sequentialSearch(arraryNum,number2);
-console.log(number2+" "+(result == -1? 'is not found':'is found'));//Conditional (ternary) operator.
+console.log(number2+" "+(result === -1? 'is not found':'is found'));//Conditional (ternary) operator.
 
 
 function binarySearch(arr,value) {
@@ -46,18 +46,18 @@ function binarySearch(arr,value) {
     arr.sort(function(a, b){return a - b}) ;
     
     let leftIndex = 0;
-    let rightIndx = arr.length -1;
+    let rightIndEx = arr.length -1;
 
-    while(leftIndex <= rightIndx ){
-        let middleIndex = Math.floor((leftIndex + rightIndx) / 2);
+    while(leftIndex <= rightIndEx ){
+        let middleIndex = Math.floor((leftIndex + rightIndEx) / 2);
 
         // check if the value is at the middle index.
-        if (arr[middleIndex] == value){
+        if (arr[middleIndex] === value){
             return middleIndex; // return index of array if found
         }
         // check if value < middleValue, cut the all the RIGHT start at middel (search LEFT half)
         if(arr[middleIndex] > value){
-            rightIndx = middleIndex-1;
+            rightIndEx = middleIndex-1;
         }else{
             /// if value > middleValue, cut the all the LEFT start at middel (search RIGHT half)
             leftIndex = middleIndex + 1;
@@ -69,12 +69,12 @@ function binarySearch(arr,value) {
 console.log("Array: "+ arraryNum);
 let number3 = 14 ;
 let result3 = binarySearch(arraryNum,number3);
-console.log(number3+" "+(result3 == -1? 'is not found':'is found')); //Conditional (ternary) operator.
+console.log(number3+" "+(result3 === -1? 'is not found':'is found')); //Conditional (ternary) operator.
 
 console.log("Array: "+ arraryNum);
 let number4 = 46 ;
 let result4 = binarySearch(arraryNum,number4);
-console.log(number4+" "+(result4 == -1? 'is not found':'is found'));//Conditional (ternary) operator.
+console.log(number4+" "+(result4 === -1? 'is not found':'is found'));//Conditional (ternary) operator.
 
 console.log("\nArray Test case1 : "+ arraryNum);
 let number5 = -3 ;

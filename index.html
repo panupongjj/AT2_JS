@@ -29,9 +29,9 @@
                             <!-- Dynamic student rows will appear here -->
                         </tbody>
                     </table>
-                    <button id="refresh-btn">Refresh</button>
-                    <button id="sort-az">Sort A-Z</button>
-                    <button id="sort-za">Sort Z-A</button>
+                    <button id="refresh-btn" onclick="refreshClick()">Refresh</button>
+                    <button id="sort-az" onclick="a2zClick()">Sort A-Z</button>
+                    <button id="sort-za" onclick="z2aClick()">Sort Z-A</button>
                 </section>
             </div>
         </div>
@@ -50,7 +50,7 @@
                         <label for="qualification">Qualification:</label>
                         <input type="text" id="qualification">
                     </form>
-                    <button id="submit-btn">Submit</button>
+                    <button id="submit-btn" onClick="addClick()" >Submit</button>
                 </section>
             </div>
         </div>
@@ -59,9 +59,9 @@
                 <h3>SEARCH STUDENT</h3>
                 <section id="search-student">
                     <input type="number" id="search-id" placeholder="Search by Student ID">
-                    <button id="search-btn">Search</button>
+                    <button id="search-btn" onclick="searchIdClick()" >Search</button>
                     <input type="text" id="search-name" placeholder="Search by Name">
-                    <button id="search-name-btn">Search</button>
+                    <button id="search-name-btn" onclick="searchNameClick()">Search</button>
                 </section>
             </div>
           
@@ -71,11 +71,12 @@
         </div>
     </div>
 
-
-
-    
     <!-- <script type="text/javascript" src="js/javascript_Part1.js"></script> -->
-    <script type="text/javascript" src="js/app.js"></script>
-    <script type="text/javascript" src="js/javascript_Part3.js"></script>
+    <!-- <script type="text/javascript" src="js/javascript_Part2.js"></script> -->
+    <script type="text/javascript" src="./js/student-list.js"></script>
+    <script type="text/javascript" src="./js/app.js"></script>
+
+
+    <!-- q1.6 q1.7 -->
 </body>
 </html>
